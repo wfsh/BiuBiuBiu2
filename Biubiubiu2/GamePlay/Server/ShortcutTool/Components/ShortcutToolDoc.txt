@@ -1,0 +1,82 @@
+OpenMessage {
+	Out {
+	    WarId,
+	    ServerName,
+    }
+    In {
+        ConnectState // 状态 connect_success
+    }
+}
+
+AddCharacter {
+	Out {
+	    CharacterList [
+            {
+               PlayerId,
+               TeamId,
+               NickName,
+               IsAI,
+               AILevel,
+               WeaponList [
+                    {
+                       WeaponId，
+                       IsSuperWeapon，
+                       Index
+                   }
+               ]
+            }
+        ]
+    }
+}
+
+// 快速结算接口
+GameOver {
+    In {}
+}
+
+// 队伍积分设置
+TeamScore {
+    In {
+        TeamId : int,  // 队伍ID
+        Score : int,  // 积分
+    }
+}
+
+// AI 移动
+AIMove {
+    In {
+       IsMove : bool,  // 是否移动
+    }
+}
+
+// AI 开火
+AIFire {
+    In {
+       IsFire : bool,  // 是否移动
+    }
+}
+
+// 角色锁血
+CharacterLockBlood {
+    In {
+        PlayerId : Long  // 玩家ID -1 为全部玩家设置 -2 为只设置玩家， > 0 为指定玩家
+        IsLock : bool,  // 是否锁血
+    }
+}
+
+// 装备切换
+EquipChange {
+    In {
+        PlayerId : Long,  // 玩家ID -1 为全部玩家设置 -2 为只设置玩家， > 0 为指定玩家
+        WeaponId : int,  // 武器ID
+        IsSuperWeapon : bool,  // 是否超级武器
+        Index : int  // 武器索引
+    }
+}
+
+// 激活超级武器
+ActivateSuperWeapon {
+    In {
+        PlayerId : Long  // 玩家ID -1 为全部玩家设置 -2 为只设置玩家， > 0 为指定玩家
+    }
+}
